@@ -1,1 +1,1 @@
-this is for student training
+this is for students training
