@@ -1,24 +1,18 @@
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from .serializer import *
 from ...models import *
 from rest_framework import viewsets
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter, OrderingFilter
 
 
 
 
-
-
-
-class CourseView(viewsets.ModelViewSet):
-    serializer_class = CourseSerializer
-    queryset = Course.objects.filter(status=True)
-    permission_classes = [IsAdminOrReadOnly]
+class FoodView(viewsets.ModelViewSet):
+    serializer_class = FoodSerializer
+    queryset = Food.objects.filter(status=True)
+    permission_classes = [IsAuthenticatedOrReadOnly]
     filterset_fields = ['category', 'title']
-    search_fields = ['content', 'category__name', 'teacher__info__email']
+    search_fields = ['content', 'category__name', 'chiefs__info__email']
     ordering_fields = ['created_date']
-    pagination_class = CustomePaginate
 
 
 
@@ -33,6 +27,16 @@ class SkillsView(viewsets.ModelViewSet):
     queryset = Skills.objects.all()
 
 
-class TrainerView(viewsets.ModelViewSet):
-    serializer_class = TrainerSerializer
-    queryset = Trainer.objects.filter(status=True)
+class CheifView(viewsets.ModelViewSet):
+    serializer_class = ChiefSerializer
+    queryset = Chief.objects.filter(status=True)
+
+
+class ContactView(viewsets.ModelViewSet):
+    serializer_class = ContactSerializer
+    queryset = ContactUs.objects.all()
+
+
+class ServiceView(viewsets.ModelViewSet):
+    serializer_class = ServiceSerializer
+    queryset = Services.objects.all()
