@@ -36,7 +36,7 @@ class SkillsView(viewsets.ModelViewSet):
 
 class ChefView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
-    serializer_class = Chefs
+    serializer_class = ChefSerializer
     queryset = Chefs.objects.filter(status=True)
 
 

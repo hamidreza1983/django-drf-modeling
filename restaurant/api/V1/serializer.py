@@ -24,8 +24,12 @@ class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
         fields =[
-            "title" , "status", "content", "price", 
+            "title" , "status", "content", "price", "category"
         ]
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['category'] = CategorySerializer(instance.category).data
 
    
 class EventSerializer(serializers.ModelSerializer):
@@ -40,14 +44,7 @@ class EventSerializer(serializers.ModelSerializer):
 
 
 
-
-class SkillSerializer(serializers.ModelSerializer):
-     
-    class Meta:
-        model = Skills
-        fields =[
-            "id","name"  
-        ]      
+  
 
  
    
@@ -56,7 +53,25 @@ class ChefSerializer(serializers.ModelSerializer):
      
     class Meta:
         model = Chefs
-        fields = '__all__' 
+        fields = [
+            'name','skills','status'
+        ]
+    
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['skills'] = ServiceSerializer(instance.skills).data
+
+
+class SkillSerializer(serializers.ModelSerializer):
+     
+    class Meta:
+        model = Skills
+        fields =[
+            "id","name"  
+        ]    
+
+
+
 
         
 class CategorySerializer(serializers.ModelSerializer):
