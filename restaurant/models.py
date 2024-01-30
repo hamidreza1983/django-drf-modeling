@@ -17,7 +17,6 @@ class Services(models.Model):
         ordering = ['-created_date',]
 
 
-
 class ContactUs (models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -55,7 +54,7 @@ class Chief(models.Model):
         return self.info.email
 
 class Food(models.Model):
-    image = models.ImageField(upload_to='course',default='default.jpg')
+    image = models.ImageField(upload_to='food',default='default.jpg')
     category = models.ManyToManyField(Category)
     title = models.CharField(max_length=100)
     content = models.TextField()
