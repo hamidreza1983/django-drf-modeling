@@ -82,4 +82,4 @@ class Event(models.Model):
     title = models.CharField(max_length=100)
     price = models.IntegerField(default=0)
     content=models.TextField()
-    
+    image = models.ImageField(upload_to='event',default='defult_event.jpg')

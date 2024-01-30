@@ -14,4 +14,8 @@ urlpatterns = [
     path("services/",ServiceView.as_view({'get': 'list','post':'create', 'put':'update','delete': 'destroy'}),name='services'),
     
     path("contact/",ContactView.as_view({'post':'create'}),name='contactus'),
+
+    path("skill/",SkillsView.as_view({'get': 'list','post':'create', 'put':'update','delete': 'destroy'}),name='skills'),
+
+
 ]

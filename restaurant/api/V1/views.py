@@ -1,4 +1,4 @@
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser
 from .serializer import *
 from ...models import *
 from rest_framework import viewsets
@@ -23,11 +23,13 @@ class CategoryView(viewsets.ModelViewSet):
 
 
 class SkillsView(viewsets.ModelViewSet):
+    permission_classes = [IsAdminUser]
     serializer_class = SkillsSerializer
     queryset = Skills.objects.all()
 
 
 class CheifView(viewsets.ModelViewSet):
+
     serializer_class = ChiefSerializer
     queryset = Chief.objects.filter(status=True)
 
