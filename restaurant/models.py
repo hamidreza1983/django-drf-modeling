@@ -26,7 +26,11 @@ class ContactUs (models.Model):
         return self.name
     
 
-
+class Skills(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+    
 class Category(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
@@ -46,7 +50,7 @@ class Chief(models.Model):
         return self.info.email
 <<<<<<< Updated upstream
 =======
-class Course(models.Model):
+class Food(models.Model):
     image = models.ImageField(upload_to='course',default='default.jpg')
     category = models.ManyToManyField(Category)
     title = models.CharField(max_length=100)
