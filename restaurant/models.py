@@ -14,7 +14,9 @@ class Services(models.Model):
         return self.title
     
     class Meta:
-        ordering = ['-created_data',]
+        ordering = ['-created_date',]
+
+
 class ContactUs (models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -52,7 +54,7 @@ class Chief(models.Model):
         return self.info.email
 
 class Food(models.Model):
-    image = models.ImageField(upload_to='course',default='default.jpg')
+    image = models.ImageField(upload_to='food',default='default.jpg')
     category = models.ManyToManyField(Category)
     title = models.CharField(max_length=100)
     content = models.TextField()
@@ -76,3 +78,8 @@ class Food(models.Model):
         return self.title.capitalize()
 
     
+class Event(models.Model):
+    title = models.CharField(max_length=100)
+    price = models.IntegerField(default=0)
+    content=models.TextField()
+    image = models.ImageField(upload_to='event',default='defult_event.jpg')
