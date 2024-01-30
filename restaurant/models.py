@@ -78,3 +78,8 @@ class Food(models.Model):
         return self.title.capitalize()
 
     
+class Event(models.Model):
+    title = models.CharField(max_length=100)
+    price = models.IntegerField(default=0)
+    content=models.TextField()
+    
