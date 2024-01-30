@@ -50,3 +50,7 @@ class eventView(viewsets.ModelViewSet):
     permission_classes = [IsAdminOrReadOnly]
     serializer_class = ServiceSerializer
     queryset = Services.objects.all()
+class eventView(viewsets.ModelViewSet):
+    permission_classes = [IsAdminOrReadOnly]
+    serializer_class = ServiceSerializer
+    queryset = Services.objects.all()
