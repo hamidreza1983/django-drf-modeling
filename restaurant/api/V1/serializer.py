@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from ...models import Service ,Menu,Events,Skills,Chefs,Category
+from ...models import *
+
 
 
 
@@ -30,6 +31,7 @@ class MenuSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         rep = super().to_representation(instance)
         rep['category'] = CategorySerializer(instance.category).data
+        return rep
 
    
 class EventSerializer(serializers.ModelSerializer):
@@ -60,6 +62,7 @@ class ChefSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         rep = super().to_representation(instance)
         rep['skills'] = ServiceSerializer(instance.skills).data
+        return rep
 
 
 class SkillSerializer(serializers.ModelSerializer):
