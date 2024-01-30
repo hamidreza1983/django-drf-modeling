@@ -3,6 +3,12 @@ from accounts.models import CustomeUser
 
 # Create your models here.
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
 class Service(models.Model):
     title = models.CharField(max_length=100)
     content =models.CharField(max_length=200)
@@ -15,6 +21,7 @@ class Service(models.Model):
 
 
 class Menu(models.Model):
+    category = models.ManyToManyField(Category)
     image = models.ImageField(upload_to='Menu',default='Menu.jpg')
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=200)
