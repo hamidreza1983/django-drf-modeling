@@ -11,11 +11,13 @@ urlpatterns = [
     path("chief/",CheifView.as_view({'get': 'list', 'post':'create'}),name='chiefs'),
     path("chief<int:pk>/",CheifView.as_view({'get': 'retrieve', 'put':'update','delete': 'destroy'}),name='chief-detail'),
 
-    path("services/",ServiceView.as_view({'get': 'list','post':'create', 'put':'update','delete': 'destroy'}),name='services'),
+    path("services/",ServiceView.as_view({'get': 'list','post':'create', }),name='services'),
+    path("services/<int:pk>",ServiceView.as_view({'put':'update','delete': 'destroy'}),name='service-edit'),
+
     
     path("contact/",ContactView.as_view({'post':'create'}),name='contactus'),
 
-    path("skill/",SkillsView.as_view({'get': 'list','post':'create', 'put':'update','delete': 'destroy'}),name='skills'),
+    path("skill/",SkillsView.as_view({'get': 'list','post':'create'}),name='skills'),
 
 
 ]
