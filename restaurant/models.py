@@ -2,7 +2,7 @@ from django.db import models
 from accounts.models import CustomeUser
 
 # Create your models here.
-class Services (models.Model):
+class Services(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     created_date= models.DateTimeField(auto_now_add=True)
@@ -26,7 +26,11 @@ class ContactUs (models.Model):
         return self.name
     
 
-
+class Skills(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+    
 class Category(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
@@ -44,4 +48,30 @@ class Chief(models.Model):
 
     def __str__(self):
         return self.info.email
+<<<<<<< Updated upstream
+=======
+class Food(models.Model):
+    image = models.ImageField(upload_to='course',default='default.jpg')
+    category = models.ManyToManyField(Category)
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    price = models.IntegerField(default=0)
+    chiefs = models.ForeignKey(Chief,on_delete=models.CASCADE)
+    status = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('-created_date',)
+
+    def __str__(self):
+        return self.title
+    
+
+    def snip(self):
+        return self.content[:20] + '...'
+    
+    def capt(self):
+        return self.title.capitalize()
+>>>>>>> Stashed changes
     
