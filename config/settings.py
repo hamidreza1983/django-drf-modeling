@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'restaurant',
     'accounts',
     'rest_framework',
+    'drf_yasg',
     'rest_framework.authtoken',
 ]
 

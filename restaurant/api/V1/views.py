@@ -29,7 +29,7 @@ class EventsView(viewsets.ModelViewSet):
 class SkillsView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = Skills
-    queryset = Skills.objects.filter(status=True)
+    queryset = Skills.objects.all()
 
 
 
