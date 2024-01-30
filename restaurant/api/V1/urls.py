@@ -14,6 +14,8 @@ urlpatterns = [
     path("services/",ServiceView.as_view({'get': 'list','post':'create', }),name='services'),
     path("services/<int:pk>",ServiceView.as_view({'put':'update','delete': 'destroy'}),name='service-edit'),
 
+    path("events/",eventView.as_view({'get': 'list','post':'create', }),name='events'),
+    path("events/<int:pk>",eventView.as_view({'put':'update','delete': 'destroy'}),name='event-edit'),
     
     path("contact/",ContactView.as_view({'post':'create'}),name='contactus'),
 
