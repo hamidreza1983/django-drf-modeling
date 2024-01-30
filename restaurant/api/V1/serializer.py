@@ -17,14 +17,23 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = '__all__'
     
 class MenuSerializer(serializers.ModelSerializer):
-    
-    # def create(self, validated_data):
-    #     validated_data['user'] = self.context.get('request').user
-    #     return super().create(validated_data)    
+    category = serializers.SlugRelatedField(
+        many=True,
+        slug_field='name',
+        queryset = Category.objects.all()
+    )
 
+   
     class Meta:
         model = Menu
-        fields = '__all__'
+        fields = "__all__"
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['category'] = CategorySerializer(instance.category, many=True).data
+
+    
+        return rep
           
     # def detail(self,obj):
     #     request = self.context.get('request')
@@ -66,15 +75,23 @@ class SkillsSerializer(serializers.ModelSerializer):
         model = Skills
         fields = '__all__'        
 
-class ChefssSerializer(serializers.ModelSerializer):
-    
-     # def create(self, validated_data):
-     #     validated_data['user'] = self.context.get('request').user
-     #     return super().create(validated_data)    
+class ChefsSerializer(serializers.ModelSerializer):
+    skills = serializers.SlugRelatedField(
+        many=True,
+        slug_field='name',
+        queryset = Skills.objects.all()
+    )
 
-     class Meta:
+    class Meta:
         model = Chefs
-        fields = '__all__'      
+        fields = ['name','skills','status']
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['skills'] = SkillsSerializer(instance.skills, many=True).data
+
+        return rep
+          
 class ContactusSerializer(serializers.ModelSerializer):
     
      # def create(self, validated_data):
