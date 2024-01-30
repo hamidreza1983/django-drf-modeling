@@ -12,6 +12,7 @@ class FoodView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly]
     filterset_fields = ['category', 'title']
     search_fields = ['content', 'category__name', 'chiefs__info__email']
+    ordering_fields = ['created_date']
 
 
 

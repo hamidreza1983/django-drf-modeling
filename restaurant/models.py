@@ -17,7 +17,6 @@ class Services(models.Model):
         ordering = ['-created_date',]
 
 
-        
 class ContactUs (models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
