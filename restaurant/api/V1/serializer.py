@@ -17,8 +17,6 @@ class MenuSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         rep = super().to_representation(instance)
         rep['category'] = CategorySerializer(instance.category, many=True).data
-
-    
         return rep
 
 
@@ -42,13 +40,16 @@ class ChefsSerializer(serializers.ModelSerializer):
         model = Chefs
         fields = ['name','skills','status']
 
+
+
     def to_representation(self, instance):
         rep = super().to_representation(instance)
         rep['skills'] = SkillsSerializer(instance.skills, many=True).data
-
         return rep
     
     
+
+
     def create(self, validated_data):
         
         validated_data['info'] = self.context.get('request').user
