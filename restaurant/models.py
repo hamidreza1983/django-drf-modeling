@@ -14,7 +14,7 @@ class Services(models.Model):
         return self.title
     
     class Meta:
-        ordering = ['-created_data',]
+        ordering = ['-created_date',]
 
 
         
@@ -55,7 +55,7 @@ class Chief(models.Model):
         return self.info.email
 
 class Food(models.Model):
-    image = models.ImageField(upload_to='course',default='default.jpg')
+    image = models.ImageField(upload_to='food',default='default.jpg')
     category = models.ManyToManyField(Category)
     title = models.CharField(max_length=100)
     content = models.TextField()
