@@ -14,7 +14,7 @@ class Services(models.Model):
         return self.title
     
     class Meta:
-        ordering = ['-created_data']
+        ordering = ['-created_data',]
 class ContactUs (models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
