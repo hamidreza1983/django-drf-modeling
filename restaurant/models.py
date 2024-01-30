@@ -1,5 +1,5 @@
 from django.db import models
-
+from accounts.models import CustomeUser
 
 # Create your models here.
 class Services(models.Model):
@@ -50,8 +50,7 @@ class Chief(models.Model):
 
     def __str__(self):
         return self.info.email
-<<<<<<< Updated upstream
-=======
+
 class Food(models.Model):
     image = models.ImageField(upload_to='course',default='default.jpg')
     category = models.ManyToManyField(Category)
@@ -75,5 +74,5 @@ class Food(models.Model):
     
     def capt(self):
         return self.title.capitalize()
->>>>>>> Stashed changes
+
     
