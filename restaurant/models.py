@@ -19,7 +19,7 @@ class Food(models.Model):
     content = models.CharField(max_length=255)
     category = models.ManyToManyField(Category)
     price = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='Food',default='defultjpg')
+    image = models.ImageField(upload_to='Food/',default='defultjpg')
     status = models.BooleanField(default=False)
     def __str__(self):
         return self.title
@@ -28,7 +28,7 @@ class Party(models.Model):
     title = models.CharField(max_length=100)
     content = models.CharField(max_length=255)
     price = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='Party',default='defult.jpg')
+    image = models.ImageField(upload_to='Party/',default='defult.jpg')
     status = models.BooleanField(default=False)
     def __str__(self):
         return self.title
@@ -52,8 +52,8 @@ class Skill(models.Model):
 class Chef(models.Model):
     name = models.CharField(max_length=100)
     info = models.ForeignKey(CustomeUser , on_delete=models.CASCADE)
-    skills = models.ManyToManyField(Skills)
-    image = models.ImageField(upload_to='Chef', default='defult.jpg')
+    skills = models.ManyToManyField(Skill)
+    image = models.ImageField(upload_to='Chef/', default='defult.jpg')
     instagram = models.CharField(max_length=255)
     facebook = models.CharField(max_length=255)
     linkdin = models.CharField(max_length=255)
